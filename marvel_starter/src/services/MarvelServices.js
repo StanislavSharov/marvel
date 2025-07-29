@@ -29,6 +29,10 @@ class MarvelServices {
   _apiBase = "https://marvel-server-zeta.vercel.app/";
 
   _apiKey = "apikey=d4eecb0c66dedbfae4eab45d312fc1df";
+  
+  _baseOffset = 0;
+
+  
   getResources = async (url) => {
     let res = await fetch(url);
 
@@ -39,10 +43,10 @@ class MarvelServices {
     return await res.json();
   };
 
-  getAllCharacters = async () => {
+  getAllCharacters = async (offset= this._baseOffset) => {
     const res = await this.getResources(
-      "https://marvel-server-zeta.vercel.app/characters?apikey=d4eecb0c66dedbfae4eab45d312fc1df"
-    );
+  `https://marvel-server-zeta.vercel.app/characters?limit=9&offset=${offset}&apikey=d4eecb0c66dedbfae4eab45d312fc1df`
+);
     return res.data.results.map(this._transformCharacter);
   };
 
