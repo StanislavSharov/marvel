@@ -1,4 +1,5 @@
 import "./charInfo.scss";
+import PropTypes from "prop-types";
 import { Component } from "react";
 import MarvelServices from "../../services/MarvelServices";
 import Spinner from "../spinner/Spinner";
@@ -103,25 +104,12 @@ const View = ({ char }) => {
           ))
         )}
       </ul>
-
-      <ul className="char__comics-list"></ul>
     </>
   );
 };
-    
-export default CharInfo;
 
-/* {
-                 comics.length === 0? comics.slice(0, 10).map((item,i)=>{
-                         (
-                            <li key = {i} className="char__comics-item">
-                                {item.name }
-                            </li>
-                        )
-                    }):
-                             (
-                            <li className="char__comics-item">
-                                No comics with this personage
-                            </li>
-                        )
-                }        */
+CharInfo.propTypes = {
+  charId: PropTypes.number,
+};
+
+export default CharInfo;
